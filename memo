@@ -1,0 +1,3 @@
+If "cors" is enabled, all that I need to develop is client side application(almost js).
+But, unfortunately docker regstry api v2 doesn't support cors.
+http://stackoverflow.com/questions/30164083/docker-registry-2-0-enable-cors

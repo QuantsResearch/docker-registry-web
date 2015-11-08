@@ -7,7 +7,7 @@ RUN useradd -d /home/web -m web
 
 
 RUN yum update -y
-RUN yum install -y wget gcc zlib-devel openssl-devel
+RUN yum install -y wget gcc zlib-devel openssl-devel rsync
 
 
 # install python 3
