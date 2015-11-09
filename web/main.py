@@ -1,12 +1,11 @@
+#!/usr/bin/env python
 from bottle import route, run, static_file, view, functools
-
-MyAdapter = functools.partial(bottle.SimpleTemplate, syntax='<% %> % {^^}'))
-template = functools.partial(bottle.template, template_adapter=MyAdapter)
+import bottle
 
 # static
 @route('/js/<filepath:path>')
 def server_static(filepath):
-    return static_file(filepath, root='/static/js/')
+    return static_file(filepath, root='./static/js')
 
 @route('/')
 @view('main')
