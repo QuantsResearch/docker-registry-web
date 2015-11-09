@@ -6,9 +6,12 @@ DOCKER_REGISTRY_URL=os.environ["DOCKER_REGISTRY_URL"]
 DOCKER_REGISTRY_IS_SECURE=(os.environ["DOCKER_REGISTRY_IS_SECURE"] == "1")
 
 # static
-@route("/js/<filepath:path>")
+@route("/<filepath:re:.*\.js>")
 def serverStatic(filepath):
     return static_file(filepath, root='./static/js')
+@route("/<filepath:re:.*\.html>")
+def serverStatic(filepath):
+    return static_file(filepath, root='./static/html/')
 
 # main
 @route("/")
