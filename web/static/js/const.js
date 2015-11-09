@@ -1,3 +1,4 @@
 var REGISTRYPATH = {
-    repoList: "_catalog"
+    repoList: "_catalog",
+    imageTags: "/tags/list"
 };

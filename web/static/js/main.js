@@ -13,12 +13,28 @@ mainApp.config(function ($routeProvider) {
         });
 });
 
-mainApp.controller("RepositoriesController", ["$scope", "registryPath", function($scope, registryPath) {
+mainApp.controller("RepositoriesController", ["$scope", "$http", "registryPath", function($scope, $http, registryPath) {
     $scope.title = "Repositories";
 
-    console.log("RepositoriesController");
+    $http({
+        method: 'GET',
+        url: "/registryApi/" + registryPath.repoList
+    }).then(function(response){
+        $scope.repositories = response.data.repositories;
+    }, function(){
+        alert("error");
+    });
 }]);
 
-mainApp.controller("RepositoryController", ["$scope", "registryPath", function($scope, registryPath) {
-    $scope.title = "Repository";
+mainApp.controller("RepositoryController", ["$scope", "$http", "$routeParams", "registryPath", function($scope, $http, $routeParams, registryPath) {
+    $scope.title = $routeParams.name;
+
+    $http({
+        method: 'GET',
+        url: "/registryApi/" + registryPath.repoList
+    }).then(function(response){
+        $scope.repositories = response.data.repositories;
+    }, function(){
+        alert("error");
+    });
 }]);

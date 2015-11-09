@@ -22,11 +22,13 @@
         <script src="main.js"></script>
     </head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="#/repositories">Repositories</a></li>
-                <li><a href="#/repository/test">Repository</a></li>
-            </ul>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/repositories">Repositories</a></li>
+                    <!-- <li><a href="#/repository/test">Repository</a></li> -->
+                </ul>
+            </div>
         </nav>
         <div ng-view></div>
     </body>
