@@ -1,4 +1,4 @@
-FROM centos7
+FROM centos:7
 MAINTAINER QR Developers <sugiyasu@qri.jp>
 
 
