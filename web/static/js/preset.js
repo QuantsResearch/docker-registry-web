@@ -3,3 +3,5 @@ var mainApp = angular.module('mainApp', [], function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
+
+mainApp.value("registryPath", REGISTRYPATH);

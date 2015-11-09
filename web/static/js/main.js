@@ -1,3 +1,3 @@
-mainApp.controller("MainController", ["$scope", function($scope) {
+mainApp.controller("MainController", ["$scope", "registryPath", function($scope, registryPath) {
     $scope.title = "Hello";
 }]);
