@@ -10,7 +10,7 @@ Web ui for docker private registry v2, provided as docker image.
 <pre>
     registry-web:
         restart: always
-        image: quantsresearch/docker-registy-web
+        image: quantsresearch/docker-registry-web
         ports:
             - 80:8080
         environment:
