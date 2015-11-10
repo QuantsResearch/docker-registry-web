@@ -18,6 +18,13 @@ Web ui for docker private registry v2, provided as docker image.
             ENV_DOCKER_REGISTRY_USE_SSL: 1
 </pre>
 
+# Compatible browser
+* Google Chrome
+* Safari
+* Firefox
+
+Old browsers are not supported.
+
 # Remarks
 * Registry server certification is not verified.
 
