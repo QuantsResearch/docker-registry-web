@@ -1,4 +1,4 @@
-# docker-registy-web
+# docker-registry-web
 Simple web ui for docker private registry v2.
 
 # Abstract
@@ -48,7 +48,8 @@ Start docker-registry-web.
     sudo su web
     export DOCKER_REGISTRY_URL=your_docker_registry_host:your_docker_registry_port
     export DOCKER_REGISTRY_USE_SSL=1 # if http, set 0.
-    python /var/local/web/main.py
+    cd /var/local/web/
+    python main.py
     
 Open http://192.168.33.99:8080/ with browser.
     
