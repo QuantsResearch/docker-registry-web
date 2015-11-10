@@ -1,18 +1,18 @@
 <div>
-    <h1>[[title]]</h1>
+    <h1>[[repositoryName]]</h1>
 
     <table class="table">
         <caption>tags</caption>
         <thead>
         <tr>
             <th>#</th>
-            <th>Name</th>
+            <th>Tag</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="tag in tags">
             <td>[[$index + 1]]</td>
-            <td>[[tag]]</td>
+            <td><a href="#/repository/[[repositoryName]]/[[tag]]">[[tag]]<a/></td>
         </tr>
         </tbody>
     </table>

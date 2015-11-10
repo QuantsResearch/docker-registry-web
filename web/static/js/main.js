@@ -8,6 +8,10 @@ mainApp.config(function ($routeProvider) {
             templateUrl: 'repository.html',
             controller: 'RepositoryController'
         })
+        .when('/repository/:name/:tag', {
+            templateUrl: 'tag.html',
+            controller: 'TagController'
+        })
         .otherwise({
             redirectTo: '/repositories'
         });
@@ -29,13 +33,30 @@ mainApp.controller("RepositoriesController", ["$scope", "$http", "registryPath",
 mainApp.controller("RepositoryController", ["$scope", "$http", "$routeParams", "registryPath", function($scope, $http, $routeParams, registryPath) {
     var repositoryName = $routeParams.name;
 
-    $scope.title = repositoryName;
+    $scope.repositoryName = repositoryName;
 
     $http({
         method: 'GET',
-        url: "/registryApi/" + repositoryName + registryPath.imageTags
+        url: "/registryApi/" + registryPath.imageTags.replace(":name", repositoryName)
     }).then(function(response){
         $scope.tags = response.data.tags;
+    }, function(){
+        alert("error");
+    });
+}]);
+
+mainApp.controller("TagController", ["$scope", "$http", "$routeParams", "registryPath", function($scope, $http, $routeParams, registryPath) {
+    var repositoryName = $routeParams.name;
+    var tagName = $routeParams.tag;
+
+    $scope.repositoryName = repositoryName;
+    $scope.tagName = tagName;
+
+    $http({
+        method: 'GET',
+        url: "/registryApi/" + registryPath.manifests.replace(":name", repositoryName).replace(":tag", tagName)
+    }).then(function(response){
+        $scope.fsLayers = response.data.fsLayers;
     }, function(){
         alert("error");
     });

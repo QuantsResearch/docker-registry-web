@@ -1,0 +1,19 @@
+<div>
+    <h1><a href="#/repository/[[repositoryName]]">[[repositoryName]]</a>:[[tagName]]</h1>
+
+    <table class="table">
+        <caption>layers</caption>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Layer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="fsLayer in fsLayers">
+            <td>[[$index + 1]]</td>
+            <td>[[fsLayer.blobSum]]</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

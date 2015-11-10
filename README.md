@@ -1,12 +1,17 @@
 # docker-registy-web
-web ui for docker private registry v2
+Simple web ui for docker private registry v2.
 
 # Abstract
 Web ui for docker private registry v2, provided as docker image.
 
 # Development
 
-This is written by python, with bottle.py.
+## Server side
+* python 3.5
+* bottle.py
+
+## Client side
+* angular 1.4
 
 # Usage
 
