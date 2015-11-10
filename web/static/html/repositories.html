@@ -1,5 +1,10 @@
 <div>
-    [[title]]
+    <h1>[[title]]</h1>
+
+    <div class="form-group form-inline">
+        <label for="filter">filter repositories</label>
+        <input id="filter" type="text" class="form-control"  ng-model="filterText"/>
+    </div>
 
     <table class="table">
         <thead>
@@ -9,8 +14,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="repository in repositories">
-            <td>[[index + 1]]</td>
+        <tr ng-repeat="repository in repositories | filter:filterText">
+            <td>[[$index + 1]]</td>
             <td><a href="#/repository/[[repository]]">[[repository]]</a></td>
         </tr>
         </tbody>
