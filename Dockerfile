@@ -23,5 +23,6 @@ RUN pip install bottle
 
 ADD web /var/local/web
 EXPOSE 8080
-ENTRYPOINT ["python", "/var/local/web/main.py"]
+WORKDIR /var/local/web/
+ENTRYPOINT ["python", "main.py"]
 USER web
