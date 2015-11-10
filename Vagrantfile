@@ -64,8 +64,23 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   sudo apt-get update
-  #   sudo apt-get install -y apache2
-  # SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+     useradd -d /home/web -m web
+     yum update -y
+     yum install -y wget gcc zlib-devel openssl-devel rsync make
+
+     cd /usr/src
+     wget https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tgz && tar xzf Python-3.5.0.tgz
+     cd Python-3.5.0 && ./configure --with-zlib-dir=/usr/lib64 && make install
+     ln -fs /usr/local/bin/python3 /bin/python
+     ln -fs /usr/local/bin/pip3 /bin/pip
+
+     pip install bottle
+  SHELL
+
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+      config.proxy.http = ENV["HTTP_PROXY"]
+      config.proxy.https = ENV["HTTPS_PROXY"]
+      config.proxy.no_proxy = ENV["NO_PROXY"]
+    end
 end

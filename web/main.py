@@ -3,7 +3,7 @@ from bottle import route, run, static_file, view, functools
 import os, http.client, ssl
 
 DOCKER_REGISTRY_URL=os.environ["DOCKER_REGISTRY_URL"]
-DOCKER_REGISTRY_IS_SECURE=(os.environ["DOCKER_REGISTRY_IS_SECURE"] == "1")
+DOCKER_REGISTRY_USE_SSL=(os.environ["DOCKER_REGISTRY_USE_SSL"] == "1")
 
 # static
 @route("/<filepath:re:.*\.js>")
@@ -26,13 +26,12 @@ def callApi(api):
 
 # exec call docker registry api
 def callRegistryApi(api, method, param):
-    print("callRegistryApi with " + ("https" if DOCKER_REGISTRY_IS_SECURE else "http"))
-    conn = http.client.HTTPSConnection(DOCKER_REGISTRY_URL, context=ssl._create_unverified_context() ) if DOCKER_REGISTRY_IS_SECURE else http.client.HTTPConnection(DOCKER_REGISTRY_URL)
+    conn = http.client.HTTPSConnection(DOCKER_REGISTRY_URL, context=ssl._create_unverified_context() ) if DOCKER_REGISTRY_USE_SSL else http.client.HTTPConnection(DOCKER_REGISTRY_URL)
     conn.request( method, "/v2/" + api )
     res = conn.getresponse()
     status = res.status
     body = res.read().decode("UTF-8");
-    print("status=" + str(status))
+    #rint("status=" + str(status))
     conn.close()
     if status == 200:
         return body
