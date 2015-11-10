@@ -13,6 +13,12 @@ Web ui for docker private registry v2, provided as docker image.
 ## Client side
 * angular 1.4
 
+## note
+### cors
+If "cors" is enabled, all that I need to develop is client side application(almost js).
+But, unfortunately docker regstry api v2 doesn't support cors.
+http://stackoverflow.com/questions/30164083/docker-registry-2-0-enable-cors
+
 # Usage
 
 ## Set env
