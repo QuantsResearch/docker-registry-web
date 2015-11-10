@@ -14,8 +14,8 @@ Web ui for docker private registry v2, provided as docker image.
         ports:
             - 80:8080
         environment:
-            ENV_DOCKER_REGISTRY_URL: <i>your_docker_registry_host:your_docker_registry_port</i>
-            ENV_DOCKER_REGISTRY_USE_SSL: 1
+            DOCKER_REGISTRY_URL: <i>your_docker_registry_host:your_docker_registry_port</i>
+            DOCKER_REGISTRY_USE_SSL: 1
 </pre>
 
 # Compatible browser
