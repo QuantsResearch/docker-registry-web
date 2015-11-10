@@ -37,20 +37,20 @@ Web ui for docker private registry v2, provided as docker image.
 
 Start virtual machine.
 <pre>
-    set HTTP_PROXY=<i>your_proxy</i><br/>
-    set HTTPS_PROXY=<i>your_proxy</i><br/>
-    set NO_PROXY=localhost,127.0.0.1,<i>your_docker_registry_host(if your docker registry server exists behind proxy)</i><br/>
+    set HTTP_PROXY=<i>your_proxy</i>
+    set HTTPS_PROXY=<i>your_proxy</i>
+    set NO_PROXY=localhost,127.0.0.1,<i>your_docker_registry_host(if your docker registry server exists behind proxy)</i>
     vagrant up
 </pre>
 
 Start docker-registry-web.
 <pre>
-    vagrant ssh<br/>
-    ...<br/>
-    sudo su web<br/>
-    export DOCKER_REGISTRY_URL=<i>your_docker_registry_host:your_docker_registry_port</i><br/>
-    export DOCKER_REGISTRY_USE_SSL=1 # if http, set 0.<br/>
-    cd /var/local/web/<br/>
+    vagrant ssh
+    ...
+    sudo su web
+    export DOCKER_REGISTRY_URL=<i>your_docker_registry_host:your_docker_registry_port</i>
+    export DOCKER_REGISTRY_USE_SSL=1 # if http, set 0.
+    cd /var/local/web/
     python main.py
 </pre>
 Open http://192.168.33.99:8080/ with browser.
