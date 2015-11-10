@@ -7,15 +7,16 @@ Web ui for docker private registry v2, provided as docker image.
 # Usage
 
 ## docker-compose.yml
-
+<pre>
     registry-web:
-      restart: always
-      image: quantsresearch/docker-registy-web
-      ports:
-        - 80:8080
-      environment:
-        ENV_DOCKER_REGISTRY_URL: your_docker_registry_host:your_docker_registry_port
-        ENV_DOCKER_REGISTRY_USE_SSL: 1
+        restart: always
+        image: quantsresearch/docker-registy-web
+        ports:
+            - 80:8080
+        environment:
+            ENV_DOCKER_REGISTRY_URL: <i>your_docker_registry_host:your_docker_registry_port</i>
+            ENV_DOCKER_REGISTRY_USE_SSL: 1
+</pre>
 
 # Remarks
 * Registry server certification is not verified.
@@ -35,22 +36,23 @@ Web ui for docker private registry v2, provided as docker image.
 ### Example(Windows)
 
 Start virtual machine.
-
-    set HTTP_PROXY=your_proxy
-    set HTTPS_PROXY=your_proxy
-    set NO_PROXY=localhost,127.0.0.1,your_docker_registry_host(if your docker registry server exists inside your LAN)
+<pre>
+    set HTTP_PROXY=<i>your_proxy</i><br/>
+    set HTTPS_PROXY=<i>your_proxy</i><br/>
+    set NO_PROXY=localhost,127.0.0.1,<i>your_docker_registry_host(if your docker registry server exists behind proxy)</i><br/>
     vagrant up
+</pre>
 
 Start docker-registry-web.
-
-    vagrant ssh
-    ...
-    sudo su web
-    export DOCKER_REGISTRY_URL=your_docker_registry_host:your_docker_registry_port
-    export DOCKER_REGISTRY_USE_SSL=1 # if http, set 0.
-    cd /var/local/web/
+<pre>
+    vagrant ssh<br/>
+    ...<br/>
+    sudo su web<br/>
+    export DOCKER_REGISTRY_URL=<i>your_docker_registry_host:your_docker_registry_port</i><br/>
+    export DOCKER_REGISTRY_USE_SSL=1 # if http, set 0.<br/>
+    cd /var/local/web/<br/>
     python main.py
-    
+</pre>
 Open http://192.168.33.99:8080/ with browser.
     
 ## Note
